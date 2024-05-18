@@ -67,7 +67,7 @@ app.post("/api/auth/login", async (req, res) => {
     if (!(email && password)) {
       res.status(400).send("Incomplete data!");
     } else {
-      const user = await User.findOne({ email: email });
+      const user = await User.findOne( {where: { email: email }});
       if (!user) {
         res.status(404).send("User does not exist");
       }
